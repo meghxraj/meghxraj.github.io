@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090a0f">
+  <meta name="theme-color" content="#060913">
   <meta name="description" content="Megharaj G Mogaveer is a Senior SDET at Visa specializing in AI-enabled quality engineering, test automation, and scalable QA systems.">
   <link rel="canonical" href="https://meghxraj.github.io/">
   <meta property="og:type" content="website">
@@ -15,19 +15,23 @@
   <link rel="stylesheet" href="styles.css">
   <script>
     try {
-      if (localStorage.getItem("portfolio-theme") === "light") {
-        document.documentElement.dataset.theme = "light";
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      if (savedTheme === "light" || savedTheme === "dark") {
+        document.documentElement.dataset.theme = savedTheme;
+        document.querySelector('meta[name="theme-color"]').content = savedTheme === "light" ? "#f8fafc" : "#060913";
       }
     } catch (_) {}
   </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <canvas class="topo-canvas" id="topo-canvas" aria-hidden="true"></canvas>
+
   <header class="site-header">
     <nav class="nav-shell page-shell" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Megharaj G Mogaveer, home">
         <span class="brand-mark" aria-hidden="true">MG</span>
-        <span>Megharaj G Mogaveer</span>
+        <span class="brand-name">Megharaj G Mogaveer</span>
       </a>
       <div class="nav-links">
         <a href="#overview">Overview</a>
@@ -39,9 +43,7 @@
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
           <span class="theme-symbol" aria-hidden="true">☼</span><span class="theme-label">Light</span>
         </button>
-        <a class="resume-link" href="assets/Megharaj_G_Mogaveer_Resume_2026.pdf" download>
-          Resume <span aria-hidden="true">↓</span>
-        </a>
+        <a class="resume-link" href="assets/Megharaj_G_Mogaveer_Resume_2026.pdf" download>Resume <span aria-hidden="true">↓</span></a>
       </div>
     </nav>
   </header>
@@ -218,24 +220,143 @@
   <script>
     (() => {
       const root = document.documentElement;
-      const toggle = document.getElementById("theme-toggle");
-      const label = toggle.querySelector(".theme-label");
-      const symbol = toggle.querySelector(".theme-symbol");
+      const themeButton = document.getElementById("theme-toggle");
+      const themeLabel = themeButton.querySelector(".theme-label");
+      const themeSymbol = themeButton.querySelector(".theme-symbol");
+      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
-      const applyTheme = (theme) => {
-        if (theme === "light") root.dataset.theme = "light";
-        else delete root.dataset.theme;
-        const isLight = theme === "light";
-        toggle.setAttribute("aria-pressed", String(isLight));
-        toggle.setAttribute("aria-label", `Switch to ${isLight ? "dark" : "light"} theme`);
-        label.textContent = isLight ? "Dark" : "Light";
-        symbol.textContent = isLight ? "☾" : "☼";
+      const setTheme = (theme) => {
+        root.dataset.theme = theme;
+        const light = theme === "light";
+        themeButton.setAttribute("aria-pressed", String(light));
+        themeButton.setAttribute("aria-label", `Switch to ${light ? "dark" : "light"} theme`);
+        themeLabel.textContent = light ? "Dark" : "Light";
+        themeSymbol.textContent = light ? "☾" : "☼";
+        themeColorMeta.content = light ? "#f8fafc" : "#060913";
         try { localStorage.setItem("portfolio-theme", theme); } catch (_) {}
+        updateCanvasColors();
+        drawContours(0, false);
       };
 
-      applyTheme(root.dataset.theme === "light" ? "light" : "dark");
-      toggle.addEventListener("click", () => {
-        applyTheme(root.dataset.theme === "light" ? "dark" : "light");
+      themeButton.addEventListener("click", () => {
+        setTheme(root.dataset.theme === "light" ? "dark" : "light");
+      });
+
+      const canvas = document.getElementById("topo-canvas");
+      const ctx = canvas.getContext("2d", { alpha: true });
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let width = 0;
+      let height = 0;
+      let scale = 1;
+      let time = 0;
+      let lastFrame = 0;
+      let animationId = 0;
+      const pointer = { x: 0, y: 0, targetX: 0, targetY: 0, speed: 0 };
+      let contourRGB = "56, 189, 248";
+      let secondaryRGB = "99, 102, 241";
+
+      function updateCanvasColors() {
+        const styles = getComputedStyle(root);
+        contourRGB = styles.getPropertyValue("--contour-rgb").trim() || "56, 189, 248";
+        secondaryRGB = styles.getPropertyValue("--contour-secondary-rgb").trim() || "99, 102, 241";
+      }
+
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        scale = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = Math.round(width * scale);
+        canvas.height = Math.round(height * scale);
+        ctx.setTransform(scale, 0, 0, scale, 0, 0);
+        if (!pointer.x && !pointer.y) {
+          pointer.x = pointer.targetX = width * 0.5;
+          pointer.y = pointer.targetY = height * 0.34;
+        }
+        drawContours(0, false);
+      }
+
+      function drawContours(now, advance) {
+        if (!ctx) return;
+        if (advance && !reducedMotion) {
+          const dx = pointer.targetX - pointer.x;
+          const dy = pointer.targetY - pointer.y;
+          pointer.speed = Math.min(80, Math.hypot(dx, dy) * 0.12);
+          pointer.x += dx * 0.12;
+          pointer.y += dy * 0.12;
+          time += 0.014;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+        const lineCount = Math.max(15, Math.min(24, Math.round(height / 42)));
+        const stepX = 30;
+        for (let i = 0; i < lineCount; i++) {
+          const baseY = (height / (lineCount - 1)) * i;
+          ctx.beginPath();
+          for (let x = 0; x <= width + stepX; x += stepX) {
+            const distance = Math.hypot(x - pointer.x, baseY - pointer.y);
+            const influence = reducedMotion ? 0 : Math.max(0, 1 - distance / 300);
+            const wave = Math.sin(x * 0.0035 + time + i * 0.45) * 18
+              + Math.cos(x * 0.008 - time * 0.8 + i) * 10;
+            const cursorPush = influence * influence * Math.sin(distance * 0.03 - time * 3) * (30 + pointer.speed * 0.5);
+            const y = baseY + wave + cursorPush;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          const alpha = i % 4 === 0 ? 0.095 : 0.045;
+          ctx.strokeStyle = `rgba(${contourRGB}, ${alpha})`;
+          ctx.lineWidth = i % 4 === 0 ? 1.15 : 0.75;
+          ctx.stroke();
+        }
+
+        if (!reducedMotion) {
+          const spacing = 96;
+          for (let x = spacing; x < width; x += spacing) {
+            for (let y = spacing; y < height; y += spacing) {
+              const distance = Math.hypot(x - pointer.x, y - pointer.y);
+              if (distance < 245) {
+                const alpha = (1 - distance / 245) * 0.32;
+                const shiftX = ((x - pointer.x) / 245) * 8;
+                const shiftY = ((y - pointer.y) / 245) * 8;
+                ctx.strokeStyle = `rgba(${contourRGB}, ${alpha})`;
+                ctx.lineWidth = 0.8;
+                ctx.beginPath();
+                ctx.moveTo(x + shiftX - 3.5, y + shiftY);
+                ctx.lineTo(x + shiftX + 3.5, y + shiftY);
+                ctx.moveTo(x + shiftX, y + shiftY - 3.5);
+                ctx.lineTo(x + shiftX, y + shiftY + 3.5);
+                ctx.stroke();
+              }
+            }
+          }
+          const halo = ctx.createRadialGradient(pointer.x, pointer.y, 4, pointer.x, pointer.y, 230);
+          halo.addColorStop(0, `rgba(${contourRGB}, 0.085)`);
+          halo.addColorStop(0.55, `rgba(${secondaryRGB}, 0.025)`);
+          halo.addColorStop(1, "transparent");
+          ctx.fillStyle = halo;
+          ctx.fillRect(0, 0, width, height);
+        }
+      }
+
+      function animate(now) {
+        if (document.hidden) return;
+        if (now - lastFrame >= 32) {
+          lastFrame = now;
+          drawContours(now, true);
+        }
+        if (!reducedMotion) animationId = requestAnimationFrame(animate);
+      }
+
+      window.addEventListener("resize", resizeCanvas, { passive: true });
+      window.addEventListener("pointermove", (event) => {
+        if (event.pointerType !== "touch") {
+          pointer.targetX = event.clientX;
+          pointer.targetY = event.clientY;
+          if (reducedMotion) drawContours(0, false);
+        }
+      }, { passive: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) cancelAnimationFrame(animationId);
+        else if (!reducedMotion) animationId = requestAnimationFrame(animate);
       });
 
       if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
@@ -247,6 +368,11 @@
           });
         });
       }
+
+      updateCanvasColors();
+      resizeCanvas();
+      setTheme(root.dataset.theme === "light" ? "light" : "dark");
+      if (!reducedMotion) animationId = requestAnimationFrame(animate);
     })();
   </script>
 </body>
