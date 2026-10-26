@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f6f3">
-  <meta name="description" content="Megharaj G Mogaveer is a Senior SDET specializing in AI-enabled quality engineering, test automation, and scalable QA systems.">
+  <meta name="theme-color" content="#090a0f">
+  <meta name="description" content="Megharaj G Mogaveer is a Senior SDET at Visa specializing in AI-enabled quality engineering, test automation, and scalable QA systems.">
   <link rel="canonical" href="https://meghxraj.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://meghxraj.github.io/">
@@ -13,199 +13,241 @@
   <title>Megharaj G Mogaveer | Senior SDET</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      if (localStorage.getItem("portfolio-theme") === "light") {
+        document.documentElement.dataset.theme = "light";
+      }
+    } catch (_) {}
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <div class="header-inner">
+    <nav class="nav-shell page-shell" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Megharaj G Mogaveer, home">
         <span class="brand-mark" aria-hidden="true">MG</span>
-        <span class="brand-copy"><strong>Megharaj G Mogaveer</strong><small>Senior SDET</small></span>
+        <span>Megharaj G Mogaveer</span>
       </a>
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="#impact">Impact</a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
         <a href="#experience">Experience</a>
-        <a href="#toolkit">Toolkit</a>
+        <a href="#credentials">Credentials</a>
         <a href="#contact">Contact</a>
-      </nav>
-      <a class="header-resume" href="assets/Megharaj_G_Mogaveer_Resume_2026.pdf" download>
-        <span>Resume</span><span aria-hidden="true">↓</span>
-      </a>
-    </div>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+          <span class="theme-symbol" aria-hidden="true">☼</span><span class="theme-label">Light</span>
+        </button>
+        <a class="resume-link" href="assets/Megharaj_G_Mogaveer_Resume_2026.pdf" download>
+          Resume <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </nav>
   </header>
 
-  <main id="main">
-    <section class="hero page-shell" id="top" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Quality engineering · AI-enabled testing</p>
-        <h1 id="hero-title">Engineering confidence into <em>every release.</em></h1>
-        <p class="hero-intro">I build reliable test systems for complex software and bring AI into QA workflows with clear, measurable results.</p>
-        <div class="hero-meta">
-          <span class="meta-icon" aria-hidden="true">⌖</span>
-          <span>Bengaluru, India</span>
-          <span class="meta-divider" aria-hidden="true"></span>
-          <span>9+ years in quality engineering</span>
-        </div>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#experience">Explore my work <span aria-hidden="true">↘</span></a>
-          <a class="button button-quiet" href="assets/Megharaj_G_Mogaveer_Resume_2026.pdf" download>Download resume <span aria-hidden="true">↓</span></a>
-        </div>
+  <main class="page-shell main-shell" id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <p class="hero-kicker"><span class="status-dot" aria-hidden="true"></span> SENIOR SDET <span class="kicker-separator">/</span> VISA <span class="kicker-separator">/</span> BENGALURU, INDIA</p>
+      <h1 id="hero-title">Quality engineering<br>for <span class="gradient-text">complex releases.</span></h1>
+      <p class="hero-lead">I build dependable test systems and AI-enabled QA workflows. My experience spans banking and insurance platforms, enterprise automation, and quality engineering at Visa.</p>
+      <div class="hero-actions">
+        <a class="action action-primary" href="mailto:gm_meghraj96@yahoo.in">Get in touch <span aria-hidden="true">↗</span></a>
+        <a class="action action-secondary" href="https://www.linkedin.com/in/megharajgm/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a class="action action-secondary" href="https://github.com/meghxraj" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a class="action action-secondary" href="assets/Megharaj_G_Mogaveer_Resume_2026.pdf" download>Download resume <span aria-hidden="true">↓</span></a>
       </div>
-      <aside class="profile-card" aria-label="Profile overview">
-        <div class="profile-card-top">
-          <span class="card-index">PROFILE / 01</span>
-          <span class="orbit-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-        </div>
-        <div class="profile-monogram" aria-hidden="true">M<span>G</span></div>
-        <p class="profile-label">Currently</p>
-        <h2>Senior SDET<br>at Visa</h2>
-        <p class="profile-period">October 2022 — Present</p>
-        <div class="profile-rule"></div>
-        <div class="profile-specialty">
-          <span>FOCUS AREAS</span>
-          <p>Agentic QA workflows<br>Automation architecture<br>Shift-left quality</p>
-        </div>
-        <div class="card-coordinate" aria-hidden="true">12°58′ N&nbsp; 77°35′ E</div>
-      </aside>
-      <div class="hero-index" aria-hidden="true">QUALITY ENGINEERING · 2026</div>
+      <div class="hero-footline"><span>9+ years</span><span class="footline-dot" aria-hidden="true"></span><span>Automation · API quality · AI-assisted testing</span></div>
     </section>
 
-    <section class="impact-section section-block" id="impact" aria-labelledby="impact-title">
-      <div class="page-shell">
-        <div class="section-heading">
-          <div><p class="eyebrow">Results at a glance</p><h2 id="impact-title">Quality you can measure.</h2></div>
-          <p class="section-note">Selected outcomes from enterprise QA and automation work.</p>
-        </div>
-        <div class="impact-grid">
-          <article class="impact-card impact-featured">
-            <div class="impact-number"><small>UP TO</small> 80<span>%</span></div>
-            <p>Less manual testing effort through Jira-integrated, AI-driven QA workflows.</p>
-            <span class="impact-context">VISA · MCP SERVER + AGENTIC WORKFLOWS</span>
-          </article>
-          <article class="impact-card">
-            <div class="impact-number">500<span>+</span></div>
-            <p>Regression cases automated with Java and Selenium.</p>
-            <span class="impact-context">ALLSTATE · UI AUTOMATION</span>
-          </article>
-          <article class="impact-card">
-            <div class="impact-number">60<span>%</span></div>
-            <p>Faster execution after building a lightweight BDD API framework.</p>
-            <span class="impact-context">ALLSTATE · API AUTOMATION</span>
-          </article>
-          <article class="impact-card">
-            <div class="impact-number">70<span>%</span></div>
-            <p>Increase in service test coverage through REST and SOAP API testing.</p>
-            <span class="impact-context">ALLSTATE · API QUALITY</span>
-          </article>
-        </div>
+    <section class="content-section" id="overview" aria-labelledby="overview-title">
+      <div class="section-heading">
+        <div><p class="section-index">01 <span>//</span> ENGINEERING SIGNAL</p><h2 id="overview-title">Outcomes at a glance.</h2></div>
+        <p class="section-aside">Measured improvements from enterprise QA and automation work.</p>
       </div>
-    </section>
+      <div class="bento-grid overview-grid">
+        <article class="bento-card signal-card" aria-label="Selected engineering outcomes">
+          <div class="card-heading"><span class="card-label">QUANTIFIED IMPACT</span><span class="card-glyph" aria-hidden="true">↗</span></div>
+          <div class="metrics-grid">
+            <div class="metric-item"><span class="metric-prefix">UP TO</span><strong>80<span>%</span></strong><p>less manual testing effort with Jira-integrated AI QA workflows at Visa</p></div>
+            <div class="metric-item"><span class="metric-prefix">ALLSTATE</span><strong>60<span>%</span></strong><p>faster execution with a Cucumber and Rest Assured API framework</p></div>
+            <div class="metric-item"><span class="metric-prefix">ALLSTATE</span><strong>500<span>+</span></strong><p>regression cases automated, with about a 90% pass rate</p></div>
+            <div class="metric-item"><span class="metric-prefix">ALLSTATE</span><strong>70<span>%</span></strong><p>higher service test coverage through REST and SOAP testing</p></div>
+          </div>
+        </article>
 
-    <section class="experience-section section-block" id="experience" aria-labelledby="experience-title">
-      <div class="page-shell">
-        <div class="section-heading section-heading-experience">
-          <div><p class="eyebrow">Career history</p><h2 id="experience-title">Building quality at scale.</h2></div>
-          <p class="section-note">From enterprise test automation to AI-enabled quality systems.</p>
-        </div>
-        <div class="timeline">
-          <article class="role-card role-current">
-            <div class="role-marker" aria-hidden="true"><span></span></div>
-            <div class="role-meta"><span>OCT 2022 — PRESENT</span><span class="role-tag">CURRENT</span></div>
-            <div class="role-content">
-              <div class="role-title-row"><div><h3>Senior SDET</h3><p class="company">Visa Inc.</p></div><span class="company-index">01</span></div>
-              <p class="role-summary">Modernizing quality engineering through agentic workflows, scalable automation, and performance testing.</p>
-              <ul class="achievement-list">
-                <li>Architected an MCP server integrated with Jira for AI-driven test management and agentic QA workflows, reducing manual testing effort by up to 80%.</li>
-                <li>Built LangChain-based agentic workflows for self-service client onboarding and automated form generation using Form.io.</li>
-                <li>Led migration from legacy Selenium automation to Playwright, using AI-assisted testing and MCP-based test agents.</li>
-                <li>Built a WebdriverIO and Supertest end-to-end framework for UI, batch, and API testing; introduced Gatling performance testing and supported CI/CD delivery.</li>
-              </ul>
-              <div class="role-skills"><span>Playwright</span><span>MCP</span><span>LangChain</span><span>WebdriverIO</span><span>Gatling</span></div>
-            </div>
-          </article>
-          <article class="role-card">
-            <div class="role-marker" aria-hidden="true"><span></span></div>
-            <div class="role-meta"><span>APR 2020 — OCT 2022</span></div>
-            <div class="role-content">
-              <div class="role-title-row"><div><h3>Senior Consultant — SDET</h3><p class="company">Allstate Solutions Private Limited</p></div><span class="company-index">02</span></div>
-              <p class="role-summary">Expanded API and regression coverage while improving the speed and reliability of automated testing.</p>
-              <ul class="achievement-list">
-                <li>Developed a lightweight BDD API automation framework with Cucumber and Rest Assured, reducing execution time by 60%.</li>
-                <li>Automated 500+ regression cases using Java, Selenium WebDriver, TestNG, POM, and Page Factory, achieving an approximately 90% pass rate.</li>
-                <li>Raised service test coverage by 70% with REST and SOAP API testing using Postman and SoapUI; integrated automation into Jenkins CI/CD.</li>
-              </ul>
-              <div class="role-skills"><span>Rest Assured</span><span>Cucumber</span><span>Selenium</span><span>Jenkins</span></div>
-            </div>
-          </article>
-          <article class="role-card">
-            <div class="role-marker" aria-hidden="true"><span></span></div>
-            <div class="role-meta"><span>SEP 2016 — APR 2020</span></div>
-            <div class="role-content">
-              <div class="role-title-row"><div><h3>Test Engineer</h3><p class="company">Infosys Limited</p></div><span class="company-index">03</span></div>
-              <p class="role-summary">Delivered functional and automation testing for banking applications in the FCCT domain.</p>
-              <ul class="achievement-list">
-                <li>Created Selenium with Java regression scripts for 100+ scenarios, reaching approximately 40% automation coverage.</li>
-                <li>Performed manual, integration, end-to-end, and regression testing; supported portfolio automation for SLA compliance.</li>
-                <li>Built Excel VBA macros for test data processing and reporting, and worked with UFT, ALM, Jira, and VersionOne.</li>
-              </ul>
-              <div class="role-skills"><span>Java</span><span>Selenium</span><span>Banking QA</span><span>Jira</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="toolkit-section section-block" id="toolkit" aria-labelledby="toolkit-title">
-      <div class="page-shell toolkit-layout">
-        <div class="toolkit-intro"><p class="eyebrow">Skills & tools</p><h2 id="toolkit-title">A practical toolkit for dependable software.</h2><p>Test architecture, automation, and modern AI workflows—applied where they improve delivery and product confidence.</p></div>
-        <div class="toolkit-groups">
-          <article class="toolkit-group"><span class="toolkit-number">01</span><div><h3>AI & agentic quality</h3><p>GenAI testing · AI-assisted testing · MCP · Agentic workflows · Prompt engineering · AI test case generation</p></div></article>
-          <article class="toolkit-group"><span class="toolkit-number">02</span><div><h3>Automation engineering</h3><p>Playwright · Selenium WebDriver · WebdriverIO · Rest Assured · TestNG · Cucumber · Supertest</p></div></article>
-          <article class="toolkit-group"><span class="toolkit-number">03</span><div><h3>API, performance & quality</h3><p>REST & SOAP · Postman · SoapUI · Gatling · Allure · E2E · Regression · Functional · Accessibility testing</p></div></article>
-          <article class="toolkit-group"><span class="toolkit-number">04</span><div><h3>Delivery & technology</h3><p>Java · TypeScript (basic) · Jenkins · Docker · Git · Bash · SQL/MySQL · CI/CD · Agile/Scrum</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="credentials-section section-block" aria-label="Education and recognition">
-      <div class="page-shell credentials-grid">
-        <div class="credential-panel">
-          <p class="eyebrow">Education</p>
-          <h2>Bachelor of Computer Applications</h2>
-          <p class="credential-detail">University of Mysore <span>·</span> 2013–2016</p>
-          <span class="grade">79.23%</span>
-        </div>
-        <div class="credential-panel awards-panel">
-          <p class="eyebrow">Recognition</p>
-          <h2>Recognized for the work.</h2>
-          <ul class="award-list">
-            <li><span>Standing Ovation</span><small>Allstate Solutions</small></li>
-            <li><span>Star of the Month <i>×2</i></span><small>Allstate Solutions</small></li>
-            <li><span>Applause Award</span><small>Allstate Solutions</small></li>
-            <li><span>Insta Award <i>×3</i></span><small>Infosys Limited</small></li>
+        <article class="bento-card specialty-card">
+          <div class="card-heading"><span class="card-label">FOCUS AREAS</span><span class="card-glyph" aria-hidden="true">⌘</span></div>
+          <ul class="specialty-list">
+            <li><span class="specialty-icon" aria-hidden="true">01</span><span><strong>AI-enabled QA</strong><small>MCP · agentic workflows · test generation</small></span></li>
+            <li><span class="specialty-icon" aria-hidden="true">02</span><span><strong>Automation systems</strong><small>Framework design · UI · batch · API</small></span></li>
+            <li><span class="specialty-icon" aria-hidden="true">03</span><span><strong>Enterprise quality</strong><small>Banking · insurance · service orchestration</small></span></li>
           </ul>
-        </div>
+        </article>
+
+        <article class="bento-card toolkit-card">
+          <div class="card-heading"><span class="card-label">TECHNICAL TOOLKIT</span><span class="card-note">Selected tools and methods</span></div>
+          <div class="toolkit-grid">
+            <div class="toolkit-group"><h3>AI & workflow</h3><p>GenAI testing · MCP · LangChain · Agentic workflows · Prompt engineering · AI test generation</p></div>
+            <div class="toolkit-group"><h3>Automation</h3><p>Playwright · Selenium · WebdriverIO · Rest Assured · Supertest · TestNG · Cucumber</p></div>
+            <div class="toolkit-group"><h3>API & quality</h3><p>REST/SOAP · Postman · SoapUI · Gatling · Allure · E2E · Regression · Accessibility</p></div>
+            <div class="toolkit-group"><h3>Delivery & data</h3><p>Java · TypeScript (basic) · Jenkins · Docker · Git · Bash · SQL/MySQL · CI/CD</p></div>
+          </div>
+          <p class="toolkit-footnote">Earlier platforms: Perfecto Mobile · UFT/QTP · ALM · VersionOne · Maven · JUnit · Groovy</p>
+        </article>
       </div>
     </section>
 
-    <section class="contact-section" id="contact" aria-labelledby="contact-title">
-      <div class="page-shell contact-inner">
-        <div><p class="eyebrow">Let’s connect</p><h2 id="contact-title">Thoughtful quality engineering starts with a conversation.</h2><p class="contact-subtitle">For recruiter and professional inquiries, reach out directly.</p></div>
-        <div class="contact-actions">
-          <a class="contact-link contact-link-main" href="mailto:gm_meghraj96@yahoo.in">gm_meghraj96@yahoo.in <span aria-hidden="true">↗</span></a>
-          <a class="contact-link" href="https://www.linkedin.com/in/megharajgm/" target="_blank" rel="noopener noreferrer">LinkedIn profile <span aria-hidden="true">↗</span></a>
-          <a class="contact-link" href="tel:+919731271267">+91 97312 71267 <span aria-hidden="true">↗</span></a>
-        </div>
+    <section class="content-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <div><p class="section-index">02 <span>//</span> CAREER TRAJECTORY</p><h2 id="experience-title">Building quality at scale.</h2></div>
+        <p class="section-aside">From banking and insurance testing to agentic QA workflows.</p>
+      </div>
+      <div class="experience-list">
+        <article class="bento-card experience-card current-role">
+          <div class="experience-head">
+            <div class="experience-company"><span class="role-number">01</span><div><p class="company-name">Visa Inc.</p><h3>Senior SDET</h3></div></div>
+            <span class="role-period">OCT 2022 — PRESENT</span>
+          </div>
+          <p class="role-summary">Modernizing quality engineering through AI-enabled workflows, scalable automation, and performance testing.</p>
+          <ul class="achievement-list">
+            <li>Architected an MCP server integrated with Jira for AI-driven test management and agentic QA workflows, reducing manual testing effort by up to 80%.</li>
+            <li>Built LangChain-based workflows for self-service client onboarding and automated form generation using Form.io.</li>
+            <li>Led migration from legacy Selenium automation to Playwright with AI-assisted testing and MCP-based test agents.</li>
+            <li>Built a WebdriverIO and Supertest end-to-end framework for UI, batch, and API testing; introduced Gatling performance testing and supported CI/CD releases.</li>
+          </ul>
+          <div class="tag-row"><span>Playwright</span><span>MCP</span><span>LangChain</span><span>WebdriverIO</span><span>Gatling</span></div>
+        </article>
+
+        <article class="bento-card experience-card">
+          <div class="experience-head">
+            <div class="experience-company"><span class="role-number">02</span><div><p class="company-name">Allstate Solutions Private Limited</p><h3>Senior Consultant — SDET</h3></div></div>
+            <span class="role-period">APR 2020 — OCT 2022</span>
+          </div>
+          <div class="role-progression" aria-label="Role progression at Allstate">
+            <div><span class="progress-period">APR 2020 — DEC 2021</span><strong>Consultant — Testing</strong></div>
+            <div><span class="progress-period">JAN 2022 — OCT 2022</span><strong>Senior Consultant — SDET</strong></div>
+          </div>
+          <p class="role-summary">Advanced from insurance application testing into API automation, service quality, and framework development.</p>
+          <div class="allstate-highlights">
+            <div class="highlight-block"><h4>API & service automation</h4><ul class="achievement-list">
+              <li>Developed a lightweight BDD framework with Cucumber and Rest Assured, reducing API execution time by up to 60%; integrated automation with Jenkins CI/CD.</li>
+              <li>Automated REST/SOAP service orchestration with SoapUI, saving up to 40% of manual execution and increasing service coverage by 70%.</li>
+              <li>Built a pre-production database and web-service comparison utility for legacy replacements, with detailed Allure reporting; coached new hires and managed parallel application work.</li>
+            </ul></div>
+            <div class="highlight-block"><h4>Insurance application quality</h4><ul class="achievement-list">
+              <li>Tested the Alliance insurance application across application entry and underwriting; planned cases and managed defects through HP QC/ALM and VersionOne.</li>
+              <li>Automated 500+ functional and regression cases with Java, Selenium WebDriver, TestNG, and POM, reaching about a 90% pass rate; tested mobile web apps with Perfecto.</li>
+              <li>Performed root-cause analysis for critical issues, supported hotfix quality, and contributed to monthly scaled Agile releases.</li>
+            </ul></div>
+          </div>
+          <div class="tag-row"><span>Rest Assured</span><span>Cucumber</span><span>Selenium</span><span>SoapUI</span><span>Perfecto</span><span>Allure</span></div>
+        </article>
+
+        <article class="bento-card experience-card">
+          <div class="experience-head">
+            <div class="experience-company"><span class="role-number">03</span><div><p class="company-name">Infosys Limited</p><h3>Test Engineer</h3></div></div>
+            <span class="role-period">SEP 2016 — APR 2020</span>
+          </div>
+          <p class="role-summary">Quality engineering for Financial Crime and Compliance (FCCT) applications in the banking domain.</p>
+          <ul class="achievement-list">
+            <li>Analyzed requirements, planned tests, and performed manual, integration, end-to-end, and regression testing.</li>
+            <li>Built Java and Selenium scripts with the One-Touch framework for 100+ regression scenarios, reaching at least 40% automation coverage.</li>
+            <li>Started a portfolio automation initiative for SLA compliance and created Excel VBA macros to sort and process test data.</li>
+            <li>Worked with UFT, QTP, ALM, Jira, and VersionOne for test management and defect tracking.</li>
+          </ul>
+          <div class="tag-row"><span>Java</span><span>Selenium</span><span>FCCT</span><span>UFT/QTP</span><span>Excel VBA</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="credentials" aria-labelledby="credentials-title">
+      <div class="section-heading">
+        <div><p class="section-index">03 <span>//</span> CREDENTIALS</p><h2 id="credentials-title">Education & recognition.</h2></div>
+      </div>
+      <div class="bento-grid credentials-grid">
+        <article class="bento-card credential-card education-card">
+          <span class="card-label">EDUCATION</span>
+          <h3>Bachelor of Computer Applications</h3>
+          <p>University of Mysore · 2013–2016</p>
+          <strong class="credential-grade">79.23%</strong>
+        </article>
+        <article class="bento-card credential-card certification-card">
+          <span class="card-label">CERTIFICATIONS</span>
+          <ul class="compact-list">
+            <li>Cloud Computing Core · IBM / edX</li>
+            <li>Testing Technologies Basics · Infosys</li>
+            <li>Infosys Certified Selenium Advanced Tester</li>
+            <li>Infosys Certified Global Agile Tester</li>
+            <li>Infosys Certified Global Java Tester</li>
+          </ul>
+        </article>
+        <article class="bento-card credential-card awards-card">
+          <span class="card-label">RECOGNITION</span>
+          <ul class="award-list">
+            <li><span>Standing Ovation</span><small>Allstate</small></li>
+            <li><span>Star of the Month ×2</span><small>Allstate</small></li>
+            <li><span>Applause Award</span><small>Allstate</small></li>
+            <li><span>Insta Award ×3</span><small>Infosys</small></li>
+          </ul>
+        </article>
+      </div>
+      <p class="language-line"><span>LANGUAGES</span> English · Kannada · Hindi</p>
+    </section>
+
+    <section class="contact-section bento-card" id="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="section-index">04 <span>//</span> CONTACT</p>
+        <h2 id="contact-title">Let’s make quality a team advantage.</h2>
+        <p class="contact-note">For recruiter and professional inquiries, reach out directly.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:gm_meghraj96@yahoo.in">gm_meghraj96@yahoo.in <span aria-hidden="true">↗</span></a>
+        <a href="tel:+919731271267">+91 97312 71267 <span aria-hidden="true">↗</span></a>
+        <a href="https://www.linkedin.com/in/megharajgm/" target="_blank" rel="noopener noreferrer">LinkedIn profile <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="page-shell footer-inner">
-      <span>© <span id="year">2026</span> Megharaj G Mogaveer</span>
-      <span>Quality engineering · Bengaluru, India</span>
-      <a href="#top">Back to top ↑</a>
-    </div>
+  <footer class="site-footer page-shell">
+    <span>© 2026 Megharaj G Mogaveer</span>
+    <span>Quality engineering · Bengaluru, India</span>
+    <a href="#top">Back to top ↑</a>
   </footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const toggle = document.getElementById("theme-toggle");
+      const label = toggle.querySelector(".theme-label");
+      const symbol = toggle.querySelector(".theme-symbol");
+
+      const applyTheme = (theme) => {
+        if (theme === "light") root.dataset.theme = "light";
+        else delete root.dataset.theme;
+        const isLight = theme === "light";
+        toggle.setAttribute("aria-pressed", String(isLight));
+        toggle.setAttribute("aria-label", `Switch to ${isLight ? "dark" : "light"} theme`);
+        label.textContent = isLight ? "Dark" : "Light";
+        symbol.textContent = isLight ? "☾" : "☼";
+        try { localStorage.setItem("portfolio-theme", theme); } catch (_) {}
+      };
+
+      applyTheme(root.dataset.theme === "light" ? "light" : "dark");
+      toggle.addEventListener("click", () => {
+        applyTheme(root.dataset.theme === "light" ? "dark" : "light");
+      });
+
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        document.querySelectorAll(".bento-card").forEach((card) => {
+          card.addEventListener("pointermove", (event) => {
+            const bounds = card.getBoundingClientRect();
+            card.style.setProperty("--pointer-x", `${event.clientX - bounds.left}px`);
+            card.style.setProperty("--pointer-y", `${event.clientY - bounds.top}px`);
+          });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
