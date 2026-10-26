@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#060913">
+  <meta name="theme-color" content="#080b1d">
   <meta name="description" content="Megharaj G Mogaveer is a Senior SDET at Visa specializing in AI-enabled quality engineering, test automation, and scalable QA systems.">
   <link rel="canonical" href="https://meghxraj.github.io/">
   <meta property="og:type" content="website">
@@ -12,13 +12,13 @@
   <meta property="og:description" content="AI-enabled quality engineering, test automation, and scalable QA systems.">
   <title>Megharaj G Mogaveer | Senior SDET</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261026-2">
   <script>
     try {
       const savedTheme = localStorage.getItem("portfolio-theme");
       if (savedTheme === "light" || savedTheme === "dark") {
         document.documentElement.dataset.theme = savedTheme;
-        document.querySelector('meta[name="theme-color"]').content = savedTheme === "light" ? "#f8fafc" : "#060913";
+        document.querySelector('meta[name="theme-color"]').content = savedTheme === "light" ? "#f8fafc" : "#080b1d";
       }
     } catch (_) {}
   </script>
@@ -232,7 +232,7 @@
         themeButton.setAttribute("aria-label", `Switch to ${light ? "dark" : "light"} theme`);
         themeLabel.textContent = light ? "Dark" : "Light";
         themeSymbol.textContent = light ? "☾" : "☼";
-        themeColorMeta.content = light ? "#f8fafc" : "#060913";
+        themeColorMeta.content = light ? "#f8fafc" : "#080b1d";
         try { localStorage.setItem("portfolio-theme", theme); } catch (_) {}
         updateCanvasColors();
         drawContours(0, false);
@@ -254,11 +254,25 @@
       const pointer = { x: 0, y: 0, targetX: 0, targetY: 0, speed: 0 };
       let contourRGB = "56, 189, 248";
       let secondaryRGB = "99, 102, 241";
+      let contourLineAlpha = 0.07;
+      let contourLineMajorExtra = 0.06;
+      let contourCrosshairAlpha = 0.45;
+      let contourHaloAlpha = 0.12;
+      let contourHaloSecondaryAlpha = 0.04;
 
       function updateCanvasColors() {
         const styles = getComputedStyle(root);
         contourRGB = styles.getPropertyValue("--contour-rgb").trim() || "56, 189, 248";
         secondaryRGB = styles.getPropertyValue("--contour-secondary-rgb").trim() || "99, 102, 241";
+        const readAlpha = (property, fallback) => {
+          const value = Number.parseFloat(styles.getPropertyValue(property));
+          return Number.isFinite(value) ? value : fallback;
+        };
+        contourLineAlpha = readAlpha("--contour-line-alpha", 0.07);
+        contourLineMajorExtra = readAlpha("--contour-line-major-extra", 0.06);
+        contourCrosshairAlpha = readAlpha("--contour-crosshair-alpha", 0.45);
+        contourHaloAlpha = readAlpha("--contour-halo-alpha", 0.12);
+        contourHaloSecondaryAlpha = readAlpha("--contour-halo-secondary-alpha", 0.04);
       }
 
       function resizeCanvas() {
@@ -302,7 +316,7 @@
             if (x === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
           }
-          const alpha = 0.07 + (i % 3 === 0 ? 0.06 : 0);
+          const alpha = contourLineAlpha + (i % 3 === 0 ? contourLineMajorExtra : 0);
           ctx.strokeStyle = `rgba(${contourRGB}, ${alpha})`;
           ctx.lineWidth = i % 4 === 0 ? 1.4 : 0.85;
           ctx.stroke();
@@ -314,7 +328,7 @@
             for (let y = spacing; y < height; y += spacing) {
               const distance = Math.hypot(x - pointer.x, y - pointer.y);
               if (distance < 280) {
-                const alpha = (1 - distance / 280) * 0.45;
+                const alpha = (1 - distance / 280) * contourCrosshairAlpha;
                 const shiftX = ((x - pointer.x) / 280) * 10;
                 const shiftY = ((y - pointer.y) / 280) * 10;
                 ctx.strokeStyle = `rgba(${contourRGB}, ${alpha})`;
@@ -329,8 +343,8 @@
             }
           }
           const halo = ctx.createRadialGradient(pointer.x, pointer.y, 5, pointer.x, pointer.y, 260);
-          halo.addColorStop(0, `rgba(${contourRGB}, 0.12)`);
-          halo.addColorStop(0.5, `rgba(${secondaryRGB}, 0.04)`);
+          halo.addColorStop(0, `rgba(${contourRGB}, ${contourHaloAlpha})`);
+          halo.addColorStop(0.5, `rgba(${secondaryRGB}, ${contourHaloSecondaryAlpha})`);
           halo.addColorStop(1, "transparent");
           ctx.fillStyle = halo;
           ctx.fillRect(0, 0, width, height);
