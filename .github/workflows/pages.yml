@@ -24,16 +24,16 @@ jobs:
       - name: Check out the site
         uses: actions/checkout@v6
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - name: Assemble public site files
         run: |
           mkdir public
           cp index.html styles.css public/
           cp -R assets public/
       - name: Upload site files
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: public
       - name: Publish site
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
