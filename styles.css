@@ -169,9 +169,10 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .role-summary { position: relative; z-index: 1; margin: 14px 0 12px; color: var(--muted); font-size: 15px; }
 .tag-row { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
 .tag-row span { padding: 4px 8px; border: 1px solid var(--line); border-radius: 7px; background: color-mix(in srgb, var(--surface-raised) 70%, transparent); color: var(--muted); font: 11px/1.4 var(--mono); }
-.role-progression { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0 0; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
-.role-progression > div { display: grid; gap: 3px; }
-.role-progression > div + div { padding-left: 16px; border-left: 1px solid var(--line); }
+.role-progression { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 0; margin: 14px 0 0; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
+.progression-label { margin: 0 0 4px; color: var(--soft); font: 600 10px/1.5 var(--mono); letter-spacing: .08em; }
+.role-progression > div { display: grid; grid-template-columns: minmax(150px, .65fr) minmax(0, 1fr); align-items: baseline; gap: 12px; padding: 8px 0; }
+.role-progression > div + div { padding-left: 0; border-top: 1px solid var(--line); }
 .progress-period { color: var(--muted); font: 11px/1.5 var(--mono); letter-spacing: .05em; }
 .role-progression strong { color: var(--ink); font-size: 13px; font-weight: 600; }
 .credentials-grid { align-items: stretch; }
@@ -267,8 +268,8 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .company-name { font-size: 12px; }
   .role-period { max-width: 120px; padding-top: 4px; text-align: right; font-size: 10.5px; }
   .role-summary { font-size: 15px; }
-  .role-progression { gap: 9px; }
-  .role-progression > div + div { padding-left: 9px; }
+  .role-progression > div { grid-template-columns: 1fr; gap: 2px; }
+  .role-progression > div + div { padding-top: 8px; }
   .progress-period { font-size: 10.5px; }
   .role-progression strong { font-size: 12px; }
   .compact-list li { font-size: 14px; }
