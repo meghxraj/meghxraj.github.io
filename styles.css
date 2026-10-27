@@ -60,7 +60,7 @@ body { margin: 0; min-height: 100vh; overflow-x: hidden; background-color: var(-
 a { color: inherit; }
 button { color: inherit; font: inherit; }
 ::selection { background: var(--accent); color: #fff; }
-.page-shell { width: min(1000px, calc(100% - 40px)); margin-inline: auto; }
+.page-shell { width: min(1240px, calc(100% - 64px)); margin-inline: auto; }
 .skip-link { position: absolute; z-index: 100; top: -60px; left: 20px; padding: 10px 14px; border-radius: 8px; background: var(--accent-strong); color: #fff; text-decoration: none; }
 .skip-link:focus { top: 12px; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
@@ -85,7 +85,7 @@ button { color: inherit; font: inherit; }
 
 .main-shell { position: relative; z-index: 1; padding-top: 132px; padding-bottom: 54px; }
 .hero { padding: 38px 0 78px; }
-.hero-kicker { display: flex; align-items: center; gap: 9px; margin: 0 0 20px; color: var(--muted); font: 600 12px/1.5 var(--mono); letter-spacing: .085em; }
+.hero-kicker { display: flex; align-items: center; gap: 9px; width: fit-content; max-width: 100%; margin: 0 0 20px; padding: 9px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: 650 13px/1.5 var(--mono); letter-spacing: .075em; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 4px color-mix(in srgb, var(--good) 14%, transparent); }
 .kicker-separator { color: var(--soft); }
 h1, h2, h3, h4, p { margin-top: 0; }
@@ -160,27 +160,17 @@ h1, h2, h3, h4, p { margin-top: 0; }
 
 .experience-list { display: grid; gap: 13px; }
 .experience-card { padding: 22px 23px 19px; }
-.experience-head { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
-.experience-company { display: flex; align-items: center; gap: 13px; min-width: 0; }
-.role-number { width: 31px; height: 31px; display: grid; flex: 0 0 auto; place-items: center; border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent); border-radius: 10px; background: color-mix(in srgb, var(--accent) 9%, transparent); color: var(--accent); font: 10px/1 var(--mono); }
-.company-name { margin: 0 0 2px; color: var(--accent); font-size: 13px; font-weight: 600; }
+.experience-head { position: relative; z-index: 1; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.experience-company { min-width: 0; }
+.company-name { margin: 4px 0 0; color: var(--accent); font-size: 14px; font-weight: 600; line-height: 1.5; text-wrap: pretty; }
 .experience-head h3 { margin: 0; color: var(--ink); font-size: 20px; font-weight: 620; letter-spacing: -.025em; line-height: 1.4; }
-.role-period { flex: 0 0 auto; color: var(--muted); font: 11px/1.5 var(--mono); letter-spacing: .055em; }
-.role-summary { position: relative; z-index: 1; margin: 14px 0 12px; color: var(--muted); font-size: 15px; }
+.role-period { flex: 0 0 auto; padding-top: 4px; color: var(--muted); font: 11px/1.5 var(--mono); letter-spacing: .055em; }
+.role-summary { position: relative; z-index: 1; max-width: 110ch; margin: 14px 0 12px; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
 .role-highlights { position: relative; z-index: 1; display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .role-highlights li { position: relative; max-width: 105ch; padding-left: 15px; color: var(--muted); font-size: 15px; line-height: 1.72; text-wrap: pretty; }
 .role-highlights li::before { content: ""; position: absolute; top: .72em; left: 1px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
 .tag-row { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
 .tag-row span { padding: 4px 8px; border: 1px solid var(--line); border-radius: 7px; background: color-mix(in srgb, var(--surface-raised) 70%, transparent); color: var(--muted); font: 11px/1.4 var(--mono); }
-.role-progression { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 0; margin: 14px 0 0; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
-.progression-label { margin: 0 0 4px; color: var(--soft); font: 600 10px/1.5 var(--mono); letter-spacing: .08em; }
-.role-progression > div { display: grid; grid-template-columns: minmax(150px, .65fr) minmax(0, 1fr); align-items: baseline; gap: 12px; padding: 8px 0; }
-.role-progression > div > span { grid-column: 1; grid-row: 1; }
-.role-progression > div > strong { grid-column: 2; grid-row: 1; }
-.role-progression > div > p { grid-column: 1 / -1; margin: 4px 0 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
-.role-progression > div + div { padding-left: 0; border-top: 1px solid var(--line); }
-.progress-period { color: var(--muted); font: 11px/1.5 var(--mono); letter-spacing: .05em; }
-.role-progression strong { color: var(--ink); font-size: 13px; font-weight: 600; }
 .credentials-grid { align-items: stretch; }
 .education-card { grid-column: span 4; }
 .certification-card { grid-column: span 5; }
@@ -247,7 +237,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .nav-links a { font-size: 12px; }
   .main-shell { padding-top: 130px; padding-bottom: 35px; }
   .hero { padding: 23px 0 55px; }
-  .hero-kicker { flex-wrap: wrap; gap: 7px; font-size: 10px; }
+  .hero-kicker { flex-wrap: wrap; gap: 7px; padding: 7px 10px; font-size: 11px; }
   .hero h1 { font-size: clamp(43px, 12vw, 64px); }
   .hero-lead { margin: 17px 0 19px; font-size: 17px; }
   .hero-actions { gap: 7px; }
@@ -269,17 +259,10 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .toolkit-skills { gap: 6px; }
   .toolkit-skills li { padding: 5px 8px; font-size: 12px; }
   .experience-head { align-items: flex-start; gap: 12px; }
-  .experience-company { align-items: flex-start; gap: 9px; }
-  .role-number { width: 30px; height: 30px; border-radius: 8px; font-size: 11px; }
   .experience-head h3 { font-size: 17px; }
-  .company-name { font-size: 12px; }
+  .company-name { font-size: 13px; }
   .role-period { max-width: 120px; padding-top: 4px; text-align: right; font-size: 10.5px; }
   .role-summary { font-size: 15px; }
-  .role-progression > div { grid-template-columns: 1fr; gap: 2px; }
-  .role-progression > div > span, .role-progression > div > strong, .role-progression > div > p { grid-column: 1; grid-row: auto; }
-  .role-progression > div + div { padding-top: 8px; }
-  .progress-period { font-size: 10.5px; }
-  .role-progression strong { font-size: 12px; }
   .compact-list li { font-size: 14px; }
   .award-list li span { font-size: 13px; }
   .award-list li small { font-size: 12px; }
