@@ -178,7 +178,6 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .allstate-progression::before { position: absolute; top: 13px; bottom: 13px; left: 4px; width: 1px; background: linear-gradient(180deg, transparent, var(--line-strong) 12%, var(--line) 80%, transparent); content: ""; }
 .allstate-role { position: relative; min-width: 0; }
 .allstate-role::before { position: absolute; top: 12px; left: -21px; width: 7px; height: 7px; border-radius: 50%; background: var(--soft); opacity: .65; content: ""; }
-.allstate-role:first-child::before { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 13%, transparent); opacity: 1; }
 .allstate-role .role-highlights { margin-top: 12px; }
 .role-summary { position: relative; z-index: 1; max-width: 110ch; margin: 14px 0 12px; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
 .role-highlights { position: relative; z-index: 1; display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
