@@ -168,9 +168,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .approach-step p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
 
 .experience-list { display: grid; gap: 13px; }
-.experience-card { padding: 22px 23px 19px; transition: transform .3s cubic-bezier(.22, 1, .36, 1), border-color .3s ease, background-color .25s ease, box-shadow .3s ease; }
-.experience-card.has-active-career { border-color: var(--line-strong); box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--accent) 13%, transparent), 0 0 24px color-mix(in srgb, var(--accent) 8%, transparent); }
-.allstate-role.is-active .experience-head { border-bottom-color: var(--line-strong); }
+.experience-card { padding: 22px 23px 19px; }
 .experience-head { position: relative; z-index: 1; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
 .experience-company { min-width: 0; }
 .company-name { margin: 4px 0 0; color: var(--accent); font-size: 14px; font-weight: 600; line-height: 1.5; text-wrap: pretty; }
