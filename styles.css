@@ -75,6 +75,15 @@ button { color: inherit; font: inherit; }
 .nav-links a { color: var(--muted); font-size: 14px; text-decoration: none; transition: color .2s ease; }
 .nav-links a:hover { color: var(--accent); }
 .nav-actions { display: flex; align-items: center; gap: 8px; }
+.menu-toggle { display: none; width: 38px; height: 38px; place-items: center; padding: 0; border: 1px solid var(--line); border-radius: 10px; background: transparent; color: var(--muted); cursor: pointer; }
+.menu-toggle-icon, .menu-toggle-icon::before, .menu-toggle-icon::after { display: block; width: 16px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s ease, opacity .2s ease; }
+.menu-toggle-icon { position: relative; }
+.menu-toggle-icon::before, .menu-toggle-icon::after { position: absolute; left: 0; content: ""; }
+.menu-toggle-icon::before { transform: translateY(-5px); }
+.menu-toggle-icon::after { transform: translateY(5px); }
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon { background: transparent; }
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon::before { transform: rotate(45deg); }
+.menu-toggle[aria-expanded="true"] .menu-toggle-icon::after { transform: rotate(-45deg); }
 .theme-toggle, .resume-link { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: transparent; color: var(--muted); font-size: 13px; text-decoration: none; cursor: pointer; transition: border-color .2s ease, background .2s ease, color .2s ease; }
 .theme-toggle { width: 38px; padding: 0; }
 .theme-toggle:hover, .resume-link:hover { border-color: var(--line-strong); background: var(--surface-soft); color: var(--ink); }
@@ -165,18 +174,19 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .company-name { margin: 4px 0 0; color: var(--accent); font-size: 14px; font-weight: 600; line-height: 1.5; text-wrap: pretty; }
 .experience-head h3 { margin: 0; color: var(--ink); font-size: 20px; font-weight: 620; letter-spacing: -.025em; line-height: 1.4; }
 .role-period { flex: 0 0 auto; padding-top: 4px; color: var(--muted); font: 11px/1.5 var(--mono); letter-spacing: .055em; }
+.allstate-company-head { position: relative; z-index: 1; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.allstate-company-head h3 { margin: 0; color: var(--ink); font-size: 21px; font-weight: 650; letter-spacing: -.025em; line-height: 1.35; }
+.allstate-company-head p { margin: 3px 0 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+.role-timeline { position: relative; z-index: 1; margin: 17px 0 20px 7px; padding-left: 21px; }
+.timeline-role { position: relative; min-height: 72px; padding: 0 0 18px 10px; border-left: 2px solid var(--line-strong); }
+.timeline-role:last-child { min-height: 0; padding-bottom: 0; border-left-color: transparent; }
+.timeline-marker { position: absolute; top: 3px; left: -8px; width: 14px; height: 14px; border: 2px solid var(--accent); border-radius: 50%; background: var(--surface-raised); }
+.timeline-role-content h4 { margin: 0; color: var(--ink); font-size: 17px; font-weight: 650; line-height: 1.4; }
+.timeline-role-content p { margin: 1px 0 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
 .role-summary { position: relative; z-index: 1; max-width: 110ch; margin: 14px 0 12px; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
 .role-highlights { position: relative; z-index: 1; display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .role-highlights li { position: relative; max-width: 105ch; padding-left: 15px; color: var(--muted); font-size: 15px; line-height: 1.72; text-wrap: pretty; }
 .role-highlights li::before { content: ""; position: absolute; top: .72em; left: 1px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
-.role-progression { position: relative; z-index: 1; margin: 14px 0 5px; }
-.progression-label { margin: 0 0 5px; color: var(--soft); font: 600 10px/1.5 var(--mono); letter-spacing: .08em; }
-.progression-item { padding: 9px 0; border-top: 1px solid var(--line); }
-.progression-item-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.progression-item strong { color: var(--ink); font-size: 14px; font-weight: 600; }
-.progression-date { flex: 0 0 auto; color: var(--muted); font: 12px/1.5 var(--mono); letter-spacing: .035em; }
-.promotion-tag { display: inline-block; margin-left: 6px; padding: 2px 5px; border: 1px solid color-mix(in srgb, var(--good) 40%, transparent); border-radius: 5px; color: var(--good); font: 600 9px/1.4 var(--mono); letter-spacing: .04em; vertical-align: 1px; }
-.progression-item > p { margin: 4px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; text-wrap: pretty; }
 .tag-row { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
 .tag-row span { padding: 4px 8px; border: 1px solid var(--line); border-radius: 7px; background: color-mix(in srgb, var(--surface-raised) 70%, transparent); color: var(--muted); font: 11px/1.4 var(--mono); }
 .credentials-grid { align-items: stretch; }
@@ -239,10 +249,13 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .brand { flex: 1; gap: 8px; font-size: 14px; }
   .brand-mark { width: 30px; height: 30px; }
   .nav-actions { gap: 6px; }
+  .menu-toggle { display: grid; width: 36px; height: 36px; }
   .theme-toggle, .resume-link { min-height: 36px; padding-inline: 10px; font-size: 12px; }
   .theme-toggle { width: 36px; padding: 0; }
-  .nav-links { order: 3; display: flex; flex-wrap: wrap; width: 100%; justify-content: space-between; gap: 7px 14px; padding: 8px 2px 1px; }
-  .nav-links a { font-size: 12px; }
+  .nav-links { order: 3; display: none; flex-direction: column; align-items: stretch; width: 100%; gap: 0; margin: 8px 0 0; padding: 4px 2px 0; border-top: 1px solid var(--line); }
+  .nav-shell.menu-open .nav-links { display: flex; }
+  .nav-links a { padding: 9px 4px; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .nav-links a:last-child { border-bottom: 0; }
   .main-shell { padding-top: 130px; padding-bottom: 35px; }
   .hero { padding: 23px 0 55px; }
   .hero-kicker { flex-wrap: wrap; gap: 7px; padding: 7px 10px; font-size: 11px; }
@@ -266,13 +279,17 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .toolkit-group { grid-template-columns: 1fr; gap: 10px; }
   .toolkit-skills { gap: 6px; }
   .toolkit-skills li { padding: 5px 8px; font-size: 12px; }
-  .experience-head { align-items: flex-start; gap: 12px; }
+  .experience-head { flex-direction: column; align-items: flex-start; gap: 5px; }
   .experience-head h3 { font-size: 17px; }
   .company-name { font-size: 13px; }
-  .role-period { max-width: 120px; padding-top: 4px; text-align: right; font-size: 10.5px; }
+  .role-period { max-width: none; padding-top: 0; text-align: left; white-space: nowrap; font-size: 11px; }
   .role-summary { font-size: 15px; }
-  .progression-item-head { align-items: flex-start; flex-direction: column; gap: 3px; }
-  .progression-date { font-size: 11px; }
+  .allstate-company-head h3 { font-size: 19px; }
+  .allstate-company-head p { font-size: 14px; }
+  .role-timeline { margin: 15px 0 18px 4px; padding-left: 18px; }
+  .timeline-role { padding-left: 8px; }
+  .timeline-role-content h4 { font-size: 16px; }
+  .timeline-role-content p { font-size: 13px; }
   .compact-list li { font-size: 14px; }
   .award-list li span { font-size: 13px; }
   .award-list li small { font-size: 12px; }
@@ -288,6 +305,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .brand { gap: 6px; font-size: 13px; }
   .brand-mark { width: 28px; height: 28px; }
   .nav-actions { gap: 4px; }
+  .menu-toggle { width: 32px; height: 32px; }
   .theme-toggle, .resume-link { min-height: 32px; padding-inline: 7px; font-size: 11px; }
   .theme-toggle { width: 32px; padding: 0; }
   .nav-links { justify-content: center; gap: 8px 14px; }

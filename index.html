@@ -12,7 +12,7 @@
   <meta property="og:description" content="10 years of experience across banking, insurance, payments, test automation, and AI-assisted quality engineering.">
   <title>Megharaj G Mogaveer | Senior SDET</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261027-5">
+  <link rel="stylesheet" href="styles.css?v=20261027-6">
   <script>
     try {
       const savedTheme = localStorage.getItem("portfolio-theme");
@@ -33,7 +33,7 @@
         <span class="brand-mark" aria-hidden="true">MG</span>
         <span class="brand-name">Megharaj G Mogaveer</span>
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="primary-navigation">
         <a href="#overview">Overview</a>
         <a href="#work">Selected work</a>
         <a href="#experience">Experience</a>
@@ -41,6 +41,9 @@
         <a href="#contact">Contact</a>
       </div>
       <div class="nav-actions">
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
+          <span class="menu-toggle-icon" aria-hidden="true"></span>
+        </button>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
           <span class="theme-symbol" aria-hidden="true">☼</span>
         </button>
@@ -180,22 +183,30 @@
         </article>
 
         <article class="bento-card experience-card">
-          <div class="experience-head">
-            <div class="experience-company"><h3>Senior Consultant — SDET</h3><p class="company-name">Allstate Solutions Private Limited</p></div>
-            <span class="role-period">APR 2020 — OCT 2022</span>
+          <div class="allstate-company-head">
+            <h3>Allstate India</h3>
+            <p>Full-time · 2 yrs 7 mos</p>
           </div>
-          <div class="role-progression" aria-label="Role progression at Allstate">
-            <p class="progression-label">ROLE PROGRESSION</p>
-            <div class="progression-item">
-              <div class="progression-item-head"><strong>Consultant — Testing</strong><span class="progression-date">APR 2020 — DEC 2021</span></div>
-              <p>Alliance application entry and underwriting testing, including mobile web with Perfecto.</p>
+          <div class="role-timeline" aria-label="Positions at Allstate India">
+            <div class="timeline-role">
+              <span class="timeline-marker" aria-hidden="true"></span>
+              <div class="timeline-role-content">
+                <h4>Senior Consultant — SDET</h4>
+                <p>Jan 2022 — Oct 2022 · 10 mos</p>
+                <p>Bengaluru, Karnataka, India</p>
+              </div>
             </div>
-            <div class="progression-item">
-              <div class="progression-item-head"><strong>Senior Consultant — SDET <span class="promotion-tag">PROMOTED</span></strong><span class="progression-date">JAN 2022 — OCT 2022</span></div>
-              <p>Expanded into API and service automation, release support, root-cause analysis, and mentoring.</p>
+            <div class="timeline-role">
+              <span class="timeline-marker" aria-hidden="true"></span>
+              <div class="timeline-role-content">
+                <h4>Consultant — SDET</h4>
+                <p>Apr 2020 — Jan 2022 · 1 yr 10 mos</p>
+                <p>India</p>
+              </div>
             </div>
           </div>
           <ul class="role-highlights">
+            <li>Tested Alliance application entry and underwriting workflows, including mobile web with Perfecto.</li>
             <li>Automated 500+ functional and regression cases with Java, Selenium WebDriver, TestNG, and POM, reaching about a 90% pass rate.</li>
             <li>Developed Cucumber and Rest Assured API automation and SoapUI service orchestration; built a comparison utility for pre-production data and replacement services, with Allure reporting.</li>
             <li>Integrated API automation with Jenkins CI/CD; supported monthly Agile releases, root-cause analysis, hotfixes, and new-hire mentoring.</li>
@@ -279,6 +290,25 @@
       const themeButton = document.getElementById("theme-toggle");
       const themeSymbol = themeButton.querySelector(".theme-symbol");
       const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      const menuButton = document.getElementById("menu-toggle");
+      const primaryNavigation = document.getElementById("primary-navigation");
+      const navShell = document.querySelector(".nav-shell");
+
+      const setMenuOpen = (open) => {
+        navShell.classList.toggle("menu-open", open);
+        menuButton.setAttribute("aria-expanded", String(open));
+        menuButton.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+      };
+
+      menuButton.addEventListener("click", () => {
+        setMenuOpen(menuButton.getAttribute("aria-expanded") !== "true");
+      });
+      primaryNavigation.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => setMenuOpen(false));
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setMenuOpen(false);
+      });
 
       const setTheme = (theme) => {
         root.dataset.theme = theme;
