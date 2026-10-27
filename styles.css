@@ -143,7 +143,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .specialty-list strong { display: block; color: var(--ink); font-size: 14px; font-weight: 620; }
 .specialty-list small { display: block; margin-top: 3px; color: var(--muted); font-size: 14px; line-height: 1.55; }
 .toolkit-card { grid-column: 1 / -1; padding: 21px 23px 18px; }
-.toolkit-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 28px; margin-top: 20px; }
+.toolkit-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 20px; }
 .toolkit-group { min-width: 0; }
 .toolkit-group h3 { margin: 0 0 10px; color: var(--soft); font: 600 11px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .055em; }
 .toolkit-skills { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; padding: 0; list-style: none; }
@@ -278,7 +278,6 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .metrics-grid { gap: 14px 12px; margin-top: 19px; }
   .metric-item strong { font-size: 33px; }
   .metric-item p { font-size: 14px; }
-  .toolkit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
   .toolkit-skills { gap: 6px; }
   .toolkit-skills li { padding: 5px 8px; font-size: 12px; }
   .experience-head { flex-direction: column; align-items: flex-start; gap: 5px; }
@@ -308,7 +307,6 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .theme-toggle { width: 32px; padding: 0; }
   .nav-links { justify-content: center; gap: 8px 14px; }
   .main-shell { padding-top: 148px; }
-  .toolkit-grid { grid-template-columns: 1fr; gap: 18px; }
   .metrics-grid { grid-template-columns: 1fr; }
   .metric-item p { max-width: none; }
   .award-list { grid-template-columns: 1fr; }
