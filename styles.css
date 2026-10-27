@@ -168,7 +168,9 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .approach-step p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
 
 .experience-list { display: grid; gap: 13px; }
-.experience-card { padding: 22px 23px 19px; }
+.experience-card { padding: 22px 23px 19px; transition: transform .3s cubic-bezier(.22, 1, .36, 1), border-color .3s ease, background-color .25s ease, box-shadow .3s ease; }
+.experience-card.has-active-career { border-color: var(--line-strong); box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--accent) 13%, transparent), 0 0 24px color-mix(in srgb, var(--accent) 8%, transparent); }
+.allstate-role.is-active .experience-head { border-bottom-color: var(--line-strong); }
 .experience-head { position: relative; z-index: 1; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
 .experience-company { min-width: 0; }
 .company-name { margin: 4px 0 0; color: var(--accent); font-size: 14px; font-weight: 600; line-height: 1.5; text-wrap: pretty; }
@@ -179,13 +181,17 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .allstate-role { position: relative; min-width: 0; }
 .allstate-role::before { position: absolute; top: 12px; left: -21px; width: 7px; height: 7px; border-radius: 50%; background: var(--soft); opacity: .65; content: ""; }
 .allstate-role .role-highlights { margin-top: 12px; }
-.role-summary { position: relative; z-index: 1; max-width: 110ch; margin: 14px 0 12px; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
+.role-summary { position: relative; z-index: 1; max-width: none; margin: 14px 0 12px; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
 .role-highlights { position: relative; z-index: 1; display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
-.role-highlights li { position: relative; max-width: 105ch; padding-left: 15px; color: var(--muted); font-size: 15px; line-height: 1.72; text-wrap: pretty; }
+.role-highlights li { position: relative; max-width: none; padding-left: 15px; color: var(--muted); font-size: 15px; line-height: 1.72; text-wrap: pretty; }
 .role-highlights li::before { content: ""; position: absolute; top: .72em; left: 1px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
 .tag-row { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
 .experience-card .tag-row { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
 .tag-row span { padding: 4px 8px; border: 1px solid var(--line); border-radius: 7px; background: color-mix(in srgb, var(--surface-raised) 70%, transparent); color: var(--muted); font: 11px/1.4 var(--mono); }
+
+@media (min-width: 1000px) {
+  .experience-card .role-highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 30px; row-gap: 10px; }
+}
 .credentials-grid { align-items: stretch; }
 .education-card { grid-column: span 4; }
 .certification-card { grid-column: span 5; }

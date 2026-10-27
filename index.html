@@ -12,7 +12,7 @@
   <meta property="og:description" content="10 years of experience across banking, insurance, payments, test automation, and AI-assisted quality engineering.">
   <title>Megharaj G Mogaveer | Senior SDET</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261027-12">
+  <link rel="stylesheet" href="styles.css?v=20261027-13">
   <script>
     try {
       const savedTheme = localStorage.getItem("portfolio-theme");
@@ -165,7 +165,7 @@
         <p class="section-aside">Banking · insurance · payments · AI-assisted testing.</p>
       </div>
       <div class="experience-list">
-        <article class="bento-card experience-card current-role">
+        <article class="bento-card experience-card current-role" data-career-role="visa">
           <div class="experience-head">
             <div class="experience-company"><h3>Senior SDET</h3><p class="company-name">Visa Inc.</p></div>
             <span class="role-period">OCT 2022 — PRESENT</span>
@@ -184,7 +184,7 @@
 
         <article class="bento-card experience-card allstate-card">
           <div class="allstate-progression" role="group" aria-label="Career progression at Allstate India">
-            <section class="allstate-role">
+            <section class="allstate-role" data-career-role="allstate-senior">
               <div class="experience-head">
                 <div class="experience-company">
                   <h3>Senior Consultant — SDET</h3>
@@ -199,7 +199,7 @@
                 <li>Handled requirements and priority debugging across parallel applications, and coached new hires.</li>
               </ul>
             </section>
-            <section class="allstate-role">
+            <section class="allstate-role" data-career-role="allstate-consultant">
               <div class="experience-head">
                 <div class="experience-company">
                   <h3>Consultant — Testing</h3>
@@ -217,18 +217,19 @@
           <div class="tag-row"><span>Java</span><span>Cucumber</span><span>Rest Assured</span><span>SoapUI</span><span>Selenium</span><span>TestNG</span><span>Perfecto</span><span>Jenkins</span><span>Allure</span></div>
         </article>
 
-        <article class="bento-card experience-card">
+        <article class="bento-card experience-card" data-career-role="infosys">
           <div class="experience-head">
             <div class="experience-company"><h3>Test Engineer</h3><p class="company-name">Infosys Limited</p></div>
             <span class="role-period">SEP 2016 — APR 2020</span>
           </div>
           <p class="role-summary">Built my test engineering foundation in Financial Crime and Compliance (FCCT) banking applications.</p>
           <ul class="role-highlights">
-            <li>Handled requirement analysis and test planning, then performed manual, integration, end-to-end, and regression testing.</li>
-            <li>Built One-Touch Java/Selenium regression automation for 100+ scenarios, reaching at least 40% automation coverage.</li>
-            <li>Started portfolio SLA-compliance checks and created Excel VBA tools for test-data processing and reporting.</li>
+            <li>Analyzed requirements, maintained traceability, planned tests, and wrote test cases for Financial Crime and Compliance (FCCT) banking applications; performed manual, integration, end-to-end, and regression testing.</li>
+            <li>Built One-Touch Java and Selenium WebDriver regression automation for 100+ scenarios, achieving at least 40% automation coverage.</li>
+            <li>Used UFT/QTP and managed defects through ALM, Jira, and VersionOne across testing activities.</li>
+            <li>Initiated portfolio SLA-compliance checks and developed Excel VBA tools to process, categorize, and report test data.</li>
           </ul>
-          <div class="tag-row"><span>Java</span><span>Selenium</span><span>FCCT</span><span>UFT/QTP</span><span>Excel VBA</span></div>
+          <div class="tag-row"><span>Java</span><span>Selenium</span><span>FCCT</span><span>UFT/QTP</span><span>ALM</span><span>Jira</span><span>VersionOne</span><span>Excel VBA</span></div>
         </article>
       </div>
     </section>
@@ -275,7 +276,7 @@
       </div>
       <div class="contact-links">
         <a href="mailto:megharajmogaveer@gmail.com">megharajmogaveer@gmail.com</a>
-        <a href="tel:+919731271267">+91 97312 71267</a>
+        <a href="tel:+917019731267">+91 70197 31267</a>
         <a href="https://www.linkedin.com/in/megharajgm/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
       </div>
     </section>
@@ -312,6 +313,39 @@
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") setMenuOpen(false);
       });
+
+      const careerItems = [...document.querySelectorAll("[data-career-role]")];
+      const careerSection = document.getElementById("experience");
+      if (careerItems.length && careerSection) {
+        let careerUpdateQueued = false;
+        const updateCareerFocus = () => {
+          careerUpdateQueued = false;
+          const focusLine = window.innerHeight * 0.44;
+          const sectionBounds = careerSection.getBoundingClientRect();
+          const sectionAtFocusLine = sectionBounds.top <= focusLine && sectionBounds.bottom >= focusLine;
+          const nearestRole = sectionAtFocusLine
+            ? careerItems.reduce((nearest, item) => {
+                const bounds = item.getBoundingClientRect();
+                const distance = Math.max(bounds.top - focusLine, focusLine - bounds.bottom, 0);
+                return !nearest || distance < nearest.distance ? { item, distance } : nearest;
+              }, null)
+            : null;
+          const activeRole = nearestRole ? nearestRole.item : null;
+
+          careerItems.forEach((item) => item.classList.toggle("is-active", item === activeRole));
+          document.querySelectorAll(".experience-card").forEach((card) => {
+            card.classList.toggle("has-active-career", Boolean(activeRole && (card === activeRole || card.contains(activeRole))));
+          });
+        };
+        const queueCareerUpdate = () => {
+          if (careerUpdateQueued) return;
+          careerUpdateQueued = true;
+          window.requestAnimationFrame(updateCareerFocus);
+        };
+        window.addEventListener("scroll", queueCareerUpdate, { passive: true });
+        window.addEventListener("resize", queueCareerUpdate);
+        updateCareerFocus();
+      }
 
       const setTheme = (theme) => {
         root.dataset.theme = theme;
