@@ -12,7 +12,7 @@
   <meta property="og:description" content="10 years of experience across banking, insurance, payments, test automation, and AI-assisted quality engineering.">
   <title>Megharaj G Mogaveer | Senior SDET</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261027-12">
+  <link rel="stylesheet" href="styles.css?v=20261027-13">
   <script>
     try {
       const savedTheme = localStorage.getItem("portfolio-theme");
@@ -165,7 +165,8 @@
         <p class="section-aside">Banking · insurance · payments · AI-assisted testing.</p>
       </div>
       <div class="experience-list">
-        <article class="bento-card experience-card current-role">
+        <article class="bento-card experience-card current-role career-item" data-career-role="visa">
+          <span class="career-indicator" aria-hidden="true"></span>
           <div class="experience-head">
             <div class="experience-company"><h3>Senior SDET</h3><p class="company-name">Visa Inc.</p></div>
             <span class="role-period">OCT 2022 — PRESENT</span>
@@ -184,7 +185,8 @@
 
         <article class="bento-card experience-card allstate-card">
           <div class="allstate-progression" role="group" aria-label="Career progression at Allstate India">
-            <section class="allstate-role">
+            <section class="allstate-role career-item" data-career-role="allstate-senior">
+              <span class="career-indicator" aria-hidden="true"></span>
               <div class="experience-head">
                 <div class="experience-company">
                   <h3>Senior Consultant — SDET</h3>
@@ -199,7 +201,8 @@
                 <li>Handled requirements and priority debugging across parallel applications, and coached new hires.</li>
               </ul>
             </section>
-            <section class="allstate-role">
+            <section class="allstate-role career-item" data-career-role="allstate-consultant">
+              <span class="career-indicator" aria-hidden="true"></span>
               <div class="experience-head">
                 <div class="experience-company">
                   <h3>Consultant — Testing</h3>
@@ -217,7 +220,8 @@
           <div class="tag-row"><span>Java</span><span>Cucumber</span><span>Rest Assured</span><span>SoapUI</span><span>Selenium</span><span>TestNG</span><span>Perfecto</span><span>Jenkins</span><span>Allure</span></div>
         </article>
 
-        <article class="bento-card experience-card">
+        <article class="bento-card experience-card career-item" data-career-role="infosys">
+          <span class="career-indicator" aria-hidden="true"></span>
           <div class="experience-head">
             <div class="experience-company"><h3>Test Engineer</h3><p class="company-name">Infosys Limited</p></div>
             <span class="role-period">SEP 2016 — APR 2020</span>
@@ -312,6 +316,37 @@
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") setMenuOpen(false);
       });
+
+      const careerItems = [...document.querySelectorAll("[data-career-role]")];
+      const careerSection = document.getElementById("experience");
+      if (careerItems.length && careerSection) {
+        let careerUpdateQueued = false;
+        const updateCareerFocus = () => {
+          careerUpdateQueued = false;
+          const focusLine = window.innerHeight * 0.44;
+          const sectionBounds = careerSection.getBoundingClientRect();
+          const sectionAtFocusLine = sectionBounds.top <= focusLine && sectionBounds.bottom >= focusLine;
+          const activeRole = sectionAtFocusLine
+            ? careerItems.find((item) => {
+                const bounds = item.getBoundingClientRect();
+                return bounds.top <= focusLine && bounds.bottom >= focusLine;
+              }) || null
+            : null;
+
+          careerItems.forEach((item) => item.classList.toggle("is-active", item === activeRole));
+          document.querySelectorAll(".experience-card").forEach((card) => {
+            card.classList.toggle("has-active-career", Boolean(activeRole && (card === activeRole || card.contains(activeRole))));
+          });
+        };
+        const queueCareerUpdate = () => {
+          if (careerUpdateQueued) return;
+          careerUpdateQueued = true;
+          window.requestAnimationFrame(updateCareerFocus);
+        };
+        window.addEventListener("scroll", queueCareerUpdate, { passive: true });
+        window.addEventListener("resize", queueCareerUpdate);
+        updateCareerFocus();
+      }
 
       const setTheme = (theme) => {
         root.dataset.theme = theme;

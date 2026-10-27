@@ -167,17 +167,23 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .approach-step h4 { margin: 8px 0 5px; color: var(--ink); font-size: 16px; font-weight: 620; }
 .approach-step p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
 
-.experience-list { display: grid; gap: 13px; }
-.experience-card { padding: 22px 23px 19px; }
+.experience-list { --career-gutter: 24px; --career-line-x: 8px; --experience-card-pad-x: 23px; position: relative; display: grid; gap: 13px; padding-left: var(--career-gutter); }
+.experience-list::before { position: absolute; top: 28px; bottom: 28px; left: var(--career-line-x); width: 1px; background: linear-gradient(180deg, transparent, var(--line-strong) 8%, var(--line) 92%, transparent); content: ""; }
+.experience-card { overflow: visible; padding: 22px 23px 19px; transition: transform .3s cubic-bezier(.22, 1, .36, 1), border-color .3s ease, background-color .25s ease, box-shadow .3s ease; }
+.experience-card::before { border-radius: inherit; }
+.experience-card.has-active-career { border-color: var(--line-strong); box-shadow: var(--shadow), 0 0 0 1px color-mix(in srgb, var(--accent) 14%, transparent), 0 0 26px color-mix(in srgb, var(--accent) 9%, transparent); }
+.career-indicator { position: absolute; z-index: 3; width: 8px; height: 8px; border: 1px solid color-mix(in srgb, var(--soft) 45%, transparent); border-radius: 50%; background: var(--soft); opacity: .55; pointer-events: none; transition: opacity .25s ease, background-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+.experience-card > .career-indicator { top: 31px; left: calc(var(--career-line-x) - var(--career-gutter) - 4px); }
+.allstate-role .career-indicator { top: 10px; left: calc(var(--career-line-x) - var(--career-gutter) - var(--experience-card-pad-x) - 4px); }
+.career-item.is-active > .career-indicator { transform: scale(1.15); border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 13%, transparent), 0 0 12px color-mix(in srgb, var(--accent) 32%, transparent); opacity: 1; }
+.allstate-role.is-active .experience-head { border-bottom-color: var(--line-strong); }
 .experience-head { position: relative; z-index: 1; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
 .experience-company { min-width: 0; }
 .company-name { margin: 4px 0 0; color: var(--accent); font-size: 14px; font-weight: 600; line-height: 1.5; text-wrap: pretty; }
 .experience-head h3 { margin: 0; color: var(--ink); font-size: 20px; font-weight: 620; letter-spacing: -.025em; line-height: 1.4; }
 .role-period { flex: 0 0 auto; padding-top: 4px; color: var(--muted); font: 11px/1.5 var(--mono); letter-spacing: .055em; }
-.allstate-progression { position: relative; z-index: 1; display: grid; gap: 24px; margin: 1px 0 0; padding-left: 22px; }
-.allstate-progression::before { position: absolute; top: 13px; bottom: 13px; left: 4px; width: 1px; background: linear-gradient(180deg, transparent, var(--line-strong) 12%, var(--line) 80%, transparent); content: ""; }
+.allstate-progression { position: relative; z-index: 1; display: grid; gap: 24px; margin: 1px 0 0; }
 .allstate-role { position: relative; min-width: 0; }
-.allstate-role::before { position: absolute; top: 12px; left: -21px; width: 7px; height: 7px; border-radius: 50%; background: var(--soft); opacity: .65; content: ""; }
 .allstate-role .role-highlights { margin-top: 12px; }
 .role-summary { position: relative; z-index: 1; max-width: 110ch; margin: 14px 0 12px; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
 .role-highlights { position: relative; z-index: 1; display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
@@ -281,8 +287,9 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .company-name { font-size: 13px; }
   .role-period { max-width: none; padding-top: 0; text-align: left; white-space: nowrap; font-size: 11px; }
   .role-summary { font-size: 15px; }
-  .allstate-progression { gap: 20px; padding-left: 20px; }
-  .allstate-role::before { left: -19px; }
+  .experience-list { --career-gutter: 20px; --experience-card-pad-x: 16px; }
+  .experience-card > .career-indicator { top: 27px; }
+  .allstate-progression { gap: 20px; }
   .compact-list li { font-size: 14px; }
   .award-list li span { font-size: 13px; }
   .award-list li small { font-size: 12px; }
