@@ -180,12 +180,12 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .allstate-role::before { position: absolute; top: 12px; left: -21px; width: 7px; height: 7px; border-radius: 50%; background: var(--soft); opacity: .65; content: ""; }
 .allstate-role:first-child::before { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 13%, transparent); opacity: 1; }
 .allstate-role .role-highlights { margin-top: 12px; }
-.tag-row.allstate-stack { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
 .role-summary { position: relative; z-index: 1; max-width: 110ch; margin: 14px 0 12px; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
 .role-highlights { position: relative; z-index: 1; display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .role-highlights li { position: relative; max-width: 105ch; padding-left: 15px; color: var(--muted); font-size: 15px; line-height: 1.72; text-wrap: pretty; }
 .role-highlights li::before { content: ""; position: absolute; top: .72em; left: 1px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
 .tag-row { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
+.experience-card .tag-row { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
 .tag-row span { padding: 4px 8px; border: 1px solid var(--line); border-radius: 7px; background: color-mix(in srgb, var(--surface-raised) 70%, transparent); color: var(--muted); font: 11px/1.4 var(--mono); }
 .credentials-grid { align-items: stretch; }
 .education-card { grid-column: span 4; }
