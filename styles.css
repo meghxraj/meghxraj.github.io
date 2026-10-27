@@ -181,7 +181,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .allstate-role:first-child::before { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 13%, transparent); opacity: 1; }
 .allstate-role-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 .allstate-role-head h3 { margin: 0; color: var(--ink); font-size: 19px; font-weight: 650; letter-spacing: -.03em; line-height: 1.4; }
-.progression-period { flex: 0 0 auto; padding: 6px 9px; border: 1px solid var(--line); border-radius: 8px; background: color-mix(in srgb, var(--surface-raised) 72%, transparent); color: var(--muted); font: 10px/1.5 var(--mono); letter-spacing: .035em; white-space: nowrap; }
+.progression-period { flex: 0 0 auto; padding-top: 4px; color: var(--muted); font: 11px/1.5 var(--mono); letter-spacing: .055em; white-space: nowrap; }
 .allstate-role .role-highlights { margin-top: 12px; }
 .tag-row.allstate-stack { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
 .role-summary { position: relative; z-index: 1; max-width: 110ch; margin: 14px 0 12px; color: var(--muted); font-size: 15px; line-height: 1.7; text-wrap: pretty; }
@@ -289,7 +289,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .allstate-role::before { left: -19px; }
   .allstate-role-head { align-items: flex-start; flex-direction: column; gap: 8px; }
   .allstate-role-head h3 { font-size: 17px; }
-  .progression-period { padding: 5px 8px; font-size: 10px; }
+  .progression-period { padding-top: 0; font-size: 11px; }
   .compact-list li { font-size: 14px; }
   .award-list li span { font-size: 13px; }
   .award-list li small { font-size: 12px; }
