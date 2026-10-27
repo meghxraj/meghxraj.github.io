@@ -76,6 +76,7 @@ button { color: inherit; font: inherit; }
 .nav-links a:hover { color: var(--accent); }
 .nav-actions { display: flex; align-items: center; gap: 8px; }
 .theme-toggle, .resume-link { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 0 12px; border: 1px solid var(--line); border-radius: 10px; background: transparent; color: var(--muted); font-size: 13px; text-decoration: none; cursor: pointer; transition: border-color .2s ease, background .2s ease, color .2s ease; }
+.theme-toggle { width: 38px; padding: 0; }
 .theme-toggle:hover, .resume-link:hover { border-color: var(--line-strong); background: var(--surface-soft); color: var(--ink); }
 .theme-symbol { color: var(--accent); font-size: 15px; line-height: 1; }
 .resume-link { border-color: transparent; background: var(--accent); color: #06111c; font-weight: 700; }
@@ -241,7 +242,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .brand-mark { width: 30px; height: 30px; }
   .nav-actions { gap: 6px; }
   .theme-toggle, .resume-link { min-height: 36px; padding-inline: 10px; font-size: 12px; }
-  .theme-toggle .theme-label { display: none; }
+  .theme-toggle { width: 36px; padding: 0; }
   .nav-links { order: 3; display: flex; flex-wrap: wrap; width: 100%; justify-content: space-between; gap: 7px 14px; padding: 8px 2px 1px; }
   .nav-links a { font-size: 12px; }
   .main-shell { padding-top: 130px; padding-bottom: 35px; }
@@ -295,6 +296,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .brand-mark { width: 28px; height: 28px; }
   .nav-actions { gap: 4px; }
   .theme-toggle, .resume-link { min-height: 32px; padding-inline: 7px; font-size: 11px; }
+  .theme-toggle { width: 32px; padding: 0; }
   .nav-links { justify-content: center; gap: 8px 14px; }
   .main-shell { padding-top: 148px; }
   .toolkit-grid { grid-template-columns: 1fr; }

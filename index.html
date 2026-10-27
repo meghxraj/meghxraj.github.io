@@ -12,7 +12,7 @@
   <meta property="og:description" content="10 years of experience across banking, insurance, payments, test automation, and AI-assisted quality engineering.">
   <title>Megharaj G Mogaveer | Senior SDET</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261027-2">
+  <link rel="stylesheet" href="styles.css?v=20261027-3">
   <script>
     try {
       const savedTheme = localStorage.getItem("portfolio-theme");
@@ -42,7 +42,7 @@
       </div>
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
-          <span class="theme-symbol" aria-hidden="true">☼</span><span class="theme-label">Light</span>
+          <span class="theme-symbol" aria-hidden="true">☼</span>
         </button>
         <a class="resume-link" href="assets/Megharaj_G_Mogaveer_Resume_2026.pdf" download>Resume <span aria-hidden="true">↓</span></a>
       </div>
@@ -272,7 +272,6 @@
     (() => {
       const root = document.documentElement;
       const themeButton = document.getElementById("theme-toggle");
-      const themeLabel = themeButton.querySelector(".theme-label");
       const themeSymbol = themeButton.querySelector(".theme-symbol");
       const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
@@ -281,7 +280,6 @@
         const light = theme === "light";
         themeButton.setAttribute("aria-pressed", String(light));
         themeButton.setAttribute("aria-label", `Switch to ${light ? "dark" : "light"} theme`);
-        themeLabel.textContent = light ? "Dark" : "Light";
         themeSymbol.textContent = light ? "☾" : "☼";
         themeColorMeta.content = light ? "#f8fafc" : "#080b1d";
         try { localStorage.setItem("portfolio-theme", theme); } catch (_) {}
