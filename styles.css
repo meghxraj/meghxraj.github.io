@@ -187,9 +187,6 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .experience-card .tag-row { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
 .tag-row span { padding: 4px 8px; border: 1px solid var(--line); border-radius: 7px; background: color-mix(in srgb, var(--surface-raised) 70%, transparent); color: var(--muted); font: 11px/1.4 var(--mono); }
 
-@media (min-width: 1000px) {
-  .experience-card .role-highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 30px; row-gap: 10px; }
-}
 .credentials-grid { align-items: stretch; }
 .education-card { grid-column: span 4; }
 .certification-card { grid-column: span 5; }
