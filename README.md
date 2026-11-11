@@ -10,11 +10,11 @@ This site is published from the public [`meghxraj.github.io`](https://github.com
 
 To update the site, edit the files in this repository and push the `main` branch. The workflow publishes `index.html`, `styles.css`, and `assets/`; its run summary shows the deployment status.
 
-The resume PDF is a public download when this site is public. To update it later, replace the file in `assets/` and keep the same filename, or update both resume links in `index.html`.
+The resume PDF is a public download when this site is public. To update it later, replace `assets/MegharajGMogaveer.pdf` or update the resume link in `index.html`.
 
 ## Files
 
 - `index.html` — profile content and metadata
 - `styles.css` — responsive layout and visual styling
-- `assets/Megharaj_G_Mogaveer_Resume_2026.pdf` — downloadable resume
+- `assets/MegharajGMogaveer.pdf` — downloadable resume
 - `.github/workflows/pages.yml` — deployment workflow
